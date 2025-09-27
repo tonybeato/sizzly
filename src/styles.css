@@ -1,0 +1,8 @@
+.sizzly-badge {
+  display: inline-block;
+  padding: 0.25rem 0.5rem;
+  border-radius: 0.5rem;
+  font: 600 12px/1 system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji";
+  background: purple;
+  color: #fff;
+}

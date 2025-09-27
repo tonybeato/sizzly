@@ -1,0 +1,44 @@
+{
+  "name": "sizzly",
+  "version": "1.0.0",
+  "description": "Minimal front-end library (components, functions, styles).",
+  "license": "MIT",
+  "author": "Tony Beato",
+  "repository": "github:tonybeato/sizzly",
+  "homepage": "https://github.com/tonybeato/sizzly#readme",
+  "bugs": {
+    "url": "https://github.com/tonybeato/sizzly/issues"
+  },
+  "type": "module",
+  "main": "dist/sizzly.cjs",
+  "module": "dist/sizzly.js",
+  "types": "dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/sizzly.js",
+      "require": "./dist/sizzly.cjs"
+    }
+  },
+  "files": [
+    "dist",
+    "README.md",
+    "LICENSE"
+  ],
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "clean": "rm -rf dist",
+    "prepublishOnly": "npm run build"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "devDependencies": {
+    "@types/node": "^24.5.2",
+    "typescript": "^5.6.3",
+    "vite": "^5.4.0",
+    "vite-plugin-dts": "^4.5.4"
+  }
+}
