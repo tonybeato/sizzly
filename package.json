@@ -1,6 +1,6 @@
 {
   "name": "sizzly",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Minimal front-end library (components, functions, styles).",
   "license": "MIT",
   "author": "Tony Beato",
