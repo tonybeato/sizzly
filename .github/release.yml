@@ -1,0 +1,44 @@
+name: release
+
+on:
+  push:
+    tags:
+      - 'v*.*.*'   # e.g., v1.0.1
+  workflow_dispatch: {}  # allows manual run if needed
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    # If you created an Environment, uncomment and set it here:
+    # environment: production
+    permissions:
+      contents: write      # to create GitHub Releases (optional step below)
+      id-token: write      # for npm provenance (optional)
+    steps:
+      - uses: actions/checkout@v4
+        with: { fetch-depth: 0 }
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 'lts/*'
+          cache: npm
+          registry-url: 'https://registry.npmjs.org'
+
+      - run: npm ci
+      - run: npm run build
+
+      # Optional (supply-chain): include provenance
+      - run: npm publish --provenance
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+
+      # If you don't want provenance, use:
+      # - run: npm publish
+      #   env:
+      #     NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+
+      # Optional: create a GitHub Release from the tag
+      - name: Create GitHub Release
+        uses: softprops/action-gh-release@v2
+        with:
+          generate_release_notes: true
