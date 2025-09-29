@@ -1,4 +1,4 @@
-import { createBadge, version, UIButton } from 'sizzly';
+import { createBadge, version, UIButton, UIBadge } from 'sizzly';
 
 const app = document.querySelector<HTMLDivElement>('#app')!;
 app.append('Sizzly version: ' + version(), document.createElement('br'));
@@ -13,3 +13,13 @@ if (!customElements.get('ui-button')) {
 const btn = document.createElement('ui-button');
 btn.textContent = 'Click Me';
 app.appendChild(btn);
+
+
+
+if (!customElements.get('ui-badge')) {
+  customElements.define('ui-badge', UIBadge)
+}
+
+const uiBadgeSuccess = document.createElement('ui-badge');
+uiBadgeSuccess.textContent = 'Success';
+app.appendChild(uiBadgeSuccess);
